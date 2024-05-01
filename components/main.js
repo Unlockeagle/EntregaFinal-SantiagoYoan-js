@@ -20,8 +20,7 @@ fetch(API_URL)
 
 function mostarCanciones(data) {
   const contenedorCanciones = document.getElementById("contenedorCanciones");
-  console.log(contenedorCanciones.children.length);
-  if (contenedorCanciones.children.length === null) {
+  
     setTimeout(() => {
       console.log("iniciando API...")
     }, 3000);
@@ -42,7 +41,7 @@ function mostarCanciones(data) {
       onClick: function(){} // Callback after click
     }).showToast();
     
-  } console.log("API Iniciada");
+   console.log("API Iniciada");
 
   
 
