@@ -20,7 +20,34 @@ fetch(API_URL)
 
 function mostarCanciones(data) {
   const contenedorCanciones = document.getElementById("contenedorCanciones");
+  console.log(contenedorCanciones.children.length);
+  if (contenedorCanciones.children.length === null) {
+    setTimeout(() => {
+      console.log("iniciando API...")
+    }, 3000);
+
+    // Mesaje cuando la API esta apagada
+    Toastify({
+      text: `Por favor espere mientras se inicia la API suele tardar 1 minuto (T T) `,
+      duration: 10000,
+      destination: "https://github.com/apvarun/toastify-js",
+      newWindow: true,
+      close: true,
+      gravity: "top", // `top` or `bottom`
+      position: "center", // `left`, `center` or `right`
+      stopOnFocus: true, // Prevents dismissing of toast on hover
+      style: {
+        background: "linear-gradient(to right, #202020, #202020)",
+      },
+      onClick: function(){} // Callback after click
+    }).showToast();
+    
+  } console.log("API Iniciada");
+
+  
+
   data.forEach((canciones) => {
+    
     const cards = document.createElement("div");
     cards.id = "cardId";
 
@@ -61,6 +88,7 @@ console.log(arrData);
 
 function mostraPlayBtns() {
   const cards = document.querySelectorAll(".cardId");
+  
   cards.forEach((cards) => {
     const playBtn = cards.querySelector(".playBtn");
     const likeBtn = cards.querySelector(".likeBtn");
@@ -91,6 +119,7 @@ function mostraPlayBtns() {
     });
 
     playBtn.addEventListener("click", () => {
+      
       Toastify({
         text: `Reproduciendo`,  // puedo agregar el titulo de la cancion aqui...
         duration: 5000,
@@ -367,18 +396,7 @@ inputBusqueda.addEventListener("keyup", (event) => {
 });
 
 
-Toastify({
-  text: "Buen dia",
-  duration: 3000,
-  destination: "https://github.com/apvarun/toastify-js",
-  newWindow: true,
-  close: true,
-  gravity: "top", // `top` or `bottom`
-  position: "right", // `left`, `center` or `right`
-  stopOnFocus: true, // Prevents dismissing of toast on hover
-  style: {
-    background: "linear-gradient(to right, #202020, #202020)",
-  },
-  onClick: function(){} // Callback after click
-}).showToast();
+
+
+
 
